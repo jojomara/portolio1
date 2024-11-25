@@ -1,0 +1,26 @@
+{% extends 'groceryapp/base.html' %} 
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<br><br>
+<br><br>
+<div style="max-width: 500px; margin: auto; background-color: #f8f9fa; padding: 10px; border-radius: 8px;">
+    <div style="background-color: #17a2b8; color: white; text-align: center; padding: 8px; border-radius: 8px 8px 0 0;">
+        <h3 class="mb-0" style="backgroung:palevioletred;">
+            {% if credit_sale %} Edit {% else %} Add {% endif %} Credit Sale
+        </h3>
+    </div>
+    <div style="padding: 10px;">
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group text-center mt-3">
+                <button type="submit" style="background-color:palevioletred; color: white; border: none; padding: 6px 12px; font-size: 13px; border-radius: 4px; cursor: pointer;">
+                    {% if credit_sale %} Save Changes {% else %} Add Credit Sale {% endif %}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<br><br>
+{% endblock %}

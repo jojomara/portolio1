@@ -1,0 +1,66 @@
+html, body {
+    position: relative;
+    overflow-x: hidden;
+    background: url;
+    width: 100% !important;
+    height: 100vh;
+    display: table;
+    background-position: center;
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 60px; /* Add padding at the bottom to prevent form from overlapping footer */
+}
+  
+body {
+    background-color: beige;
+    font-family: 'raleway';
+}
+form {
+    width: 40%;
+    margin: 0 auto;
+    flex-grow: 1; /* Allow form to take available space */
+}
+
+.navbar {
+    background-color: darkcyan;
+    width: 100%;
+    color: palevioletred;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Change from 'fixed' to 'relative' */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar li a {
+    font-size: 18px;
+}
+
+.navbar-brand {
+    font-size: 30px !important;
+}
+
+@media(max-width: 767px) {
+    form { 
+        width: 90%;
+    }
+}
+
+.footer {
+    background-color: darkcyan;
+    color: palevioletred;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px; /* Add margin to create space between content and footer */
+    position: absolute;
+}
+

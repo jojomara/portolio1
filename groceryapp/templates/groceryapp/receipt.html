@@ -1,0 +1,35 @@
+{% extends 'groceryapp/base.html' %}
+{% block content %}
+{% load static %}
+<br /><br>
+<div class="container" style="max-width: 600px; font-family: 'Courier New', Courier, monospace;">
+    <h1 class="text-center" style="font-size: 1.5em; text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid #000; padding-bottom: 10px;">Receipt</h1>
+    <div class="text-center" style="margin-bottom: 20px;">
+        <h2 style="margin-bottom: 0; font-weight: 600;">Happy Hoe Grocery</h2>
+    {% for sale in sales %}
+        <p style="font-size: 0.9em; margin-top: 0;">Date: {{ sale.stock_date | date:"F j, Y" }}</p>
+    </div>
+
+    
+    <div style="padding: 10px; border-top: 1px dashed #000;">
+        <p><strong>Customer:</strong> {{ sale.issued_to | title }}</p>
+        <p><strong>Item:</strong> {{ sale.item.item_name }}</p>
+        <p><strong>Quantity:</strong> {{ sale.quantity }}</p>
+        <p><strong>Unit Price:</strong> UGX {{ sale.unit_price }}</p>
+        <p><strong>Amount Paid:</strong> UGX {{ sale.amount_received }}</p>
+        <p><strong>Total Price:</strong> UGX {{ sale.get_total }}</p>
+        <p><strong>Change:</strong> UGX {{ sale.get_change }}</p>
+
+        <a href="{% url 'receipt_detail' sale.id %}" style="display: block; text-align: center; margin-top: 10px;">
+            <input type="submit" value="View Final Receipt" class="btn btn-danger" style="font-size: 0.9em; width: 20%;">
+        </a>
+        
+    </div>
+    {% endfor %}
+
+    <div style="border-top: 2px solid #000; margin-top: 20px; padding-top: 10px; text-align: center;">
+        <p style="font-size: 0.9em;">Thank you for shopping with us!</p>
+        <p style="font-size: 0.9em;">© 2024JOYZ</p>
+    </div>
+</div>
+{% endblock %}

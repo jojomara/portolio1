@@ -1,0 +1,120 @@
+
+{% block content %}
+{% load static %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url("{% static 'images/m.png' %}");
+        background-size: cover;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        backgroundco
+    }
+
+    .navbar {
+        width: 100%;
+        background-color: darkcyan;
+        color: white;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative; /* Changed to relative */
+        z-index: 1000;
+    }
+
+    .navbar img {
+        height: 80px;
+    }
+
+    .navbar .login-link {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 8%;
+    }
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 80px; /* Adjusted for navbar */
+        margin-bottom: 50px; /* Space for footer */
+    }
+
+    .card {
+        background-color: hsla(0, 2%, 31%, 0.5);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        width: calc(33% - 40px);
+        margin: 10px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .card h2 {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .footer {
+        background-color: darkcyan;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        width: 100%;
+        position: relative; /* Changed to relative */
+        margin-top: auto; /* Pushes footer to the bottom of content */
+    }
+</style>
+
+<div class="navbar">
+    <img src="{% static 'images/y.png' %}" alt="Happy Hoe Grocery" height="100px" width="150px">
+    <a href="{% url 'login' %}" class="login-link">Login</a>
+</div>
+<h1 class="text-center">STOCK LEVEL</h1>
+
+<div class="container">
+    <div class="card">
+        <h2>Beans</h2>
+        <p>Quantity: 8000</p>
+    </div>
+    <div class="card">
+        <h2>Rice</h2>
+        <p>Quantity: 10000</p>
+    </div>
+    <div class="card">
+        <h2>Maize</h2>
+        <p>Quantity: 5000</p>
+    </div>
+    <div class="card">
+        <h2>Soyabeans</h2>
+        <p>Quantity: 30000</p>
+    </div>
+    <div class="card">
+        <h2>G. Nuts</h2>
+        <p>Quantity: 2000</p>
+    </div>
+    <div class="card">
+        <h2>Cow Peas</h2>
+        <p>Quantity: 1000</p>
+    </div>
+</div>
+
+<div class="footer">
+    © JOYZ @ 2024. All rights reserved.
+</div>
+
+{% endblock %}

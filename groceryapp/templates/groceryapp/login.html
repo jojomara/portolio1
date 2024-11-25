@@ -1,0 +1,36 @@
+{% extends 'groceryapp/incduels' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<br><br>
+<br><br>
+<br><br>
+ <div class = "body container-fluid container login">
+     <div class="container container-fluid top">
+        <h1 class = "text-black text-center" style = "color: black ">LOGIN.</h1><br><br>  
+       </div>     
+  
+    <div class="container container-fluid">
+      
+        <form id = "form" method="POST" class = "loginform" style="border-radius: 25px;
+        border: 2px solid #aa0808c8;  padding: 20px;
+        width: 400px;
+        height: 350px; " action="/login/"> 
+            {% csrf_token %}
+            {{ form | crispy }}  
+        
+            <br> <br> 
+            <input type="submit" name = "Submit" class="btn btn-info btn-danger btn-block" type="button">
+            <br> 
+                         
+      </form>      
+    </div>
+</div>
+<br>
+<br>
+
+<div class="footer">
+    © 2024 Happy Hoe Grocery. All rights reserved.
+</div>
+{% endblock %}

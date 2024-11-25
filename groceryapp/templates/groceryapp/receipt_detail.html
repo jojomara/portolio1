@@ -1,0 +1,49 @@
+{% extends 'groceryapp/base.html' %}
+{% block content %}
+{% load static %}
+<br /><br><br><br><br><br>
+<div class="container" style="max-width: 800px; margin-top: 20px;">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card" style="border-radius: 15px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden;">
+        <div class="card-header" style="background-color: #d1ecf1; color: white; text-align: center; padding: 20px;">
+          <h1 class="mb-2" style="font-size: 2em;">Order Summary</h1>
+          <h2 class="lead" style="font-size: 1.2em;">Customer Name: {{ receipt.issued_to | title }}</h2>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-sm" style="border-collapse: separate; border-spacing: 0 10px;">
+              <thead style="background-color: #bee5eb; border-bottom: 2px solid #dee2e6;">
+                <tr>
+                  <th style="padding: 12px; text-align: left; font-weight: bold;">Item Name</th>
+                  <th style="padding: 12px; text-align: center; font-weight: bold;">Item Quantity</th>
+                  <th style="padding: 12px; text-align: right; font-weight: bold;">Total Bill (Ugx)</th>
+                  <th style="padding: 12px; text-align: right; font-weight: bold;">Amount Paid (Ugx)</th>
+                  <th style="padding: 12px; text-align: right; font-weight: bold;">Total Change (Ugx)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background-color: white; border: 1px solid #dee2e6; border-radius: 8px;">
+                  <td style="padding: 12px;">{{ receipt.item.item_name | title }}</td>
+                  <td class="text-xs-center" style="padding: 12px;">{{ receipt.quantity }}</td>
+                  <td class="text-xs-right" style="padding: 12px;">
+                    Ugx {% if total_price %} {{ total_price }} {% else %} 0 {% endif %}
+                  </td>
+                  <td class="text-xs-right" style="padding: 12px;">Ugx {{ receipt.amount_received }}</td>
+                  <td class="text-xs-right" style="padding: 12px;">
+                    Ugx {% if change %} {{ change }} {% else %} 0 {% endif %}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="footer" style="text-align: center; padding: 20px; font-size: 0.9em; color: #6c757d;">
+  © 2024 Happy Hoe Grocery. All rights reserved.
+</div>
+{% endblock %}

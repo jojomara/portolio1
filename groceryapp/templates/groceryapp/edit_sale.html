@@ -1,0 +1,18 @@
+{% extends 'groceryapp/base.html' %}
+{% block content %}
+<div class="container">
+  <h1>Edit Sale</h1>
+  <form method="POST" action="{% url 'edit_sale' sale.id %}">
+    {% csrf_token %}
+    {{ sale_form.as_p }}
+    <button type="submit" class="btn btn-success">Save Changes</button>
+  </form>
+  {% if sale_form.errors %}
+    <ul class="alert alert-danger">
+      {% for field, errors in sale_form.errors.items %}
+        <li>{{ field }}: {{ errors|join:", " }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+{% endblock %}

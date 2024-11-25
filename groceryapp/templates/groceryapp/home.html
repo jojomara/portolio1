@@ -1,0 +1,55 @@
+{% extends 'groceryapp/base.html'%}
+{% load static %}
+{% block content%}
+<br></br>
+<div class="container mt-5">
+  <h1 class="text-center">ITEMS IN STOCK</h1>
+  <br>
+  <div class="row mb-3" >
+  <div row justify-content-end>
+  <div class="container col md-6 ">
+    <form action="" method="GET" class="d-flex justify-content-end">
+      {{ product_filters.form }}
+      <input 
+        type="submit"
+        value="Search Stocks"
+        class="btn btn-light"style="background:darkcyan;" />
+    </form>
+  </div>
+  </div>
+  <br>
+  <div class="container text-center col md-5">
+    <a href="{% url 'daily_sales' %}" class="btn btn-light"style="background:palevioletred;,colour:darkcyan;">View Daily Sales</a>
+</div>
+<br>
+  <div class="container text-center col md-5">
+    <a href="{% url 'add_credit_sale' %}" class="btn btn-light" style="background:palevioletred;,colour:darkcyan;">Add Credit Sale</a>
+  </div>
+  <br>
+  <div class="container text-center col-4">
+    <a href="{% url 'add_stock' %}" class="btn btn-light" style="background:palevioletred;,colour:darkcyan;">Add Stock</a>
+</div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    {% for product in products %}
+      <div class="col-md-4 mb-4">
+        <div class="card" style="box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.item_name }}</h5>
+            <p class="card-text"><strong>Branch Name:</strong> {{ product.stock_branch_name }}</p>
+            <p class="card-text"><strong>Quantity:</strong> {{ product.total_quantity }}</p>
+            <p class="card-text"><strong>Unit Price (UGX):</strong> UGX {{ product.unit_price }}</p>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-info" style="background:darkcyan;">Sale Item</a>
+            <a href="{% url 'delete_detail' product.id %}" class="btn btn-danger" style="background:palevioletred;">Delete Item</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<br>
+
+{% endblock %}

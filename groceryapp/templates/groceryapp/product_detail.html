@@ -1,0 +1,39 @@
+{% extends 'groceryapp/base.html'%} {% block content%}
+{%load static %}
+<br></br>
+<br>
+<br>
+<br><br>
+<div class = "container">
+    <a href="{% url 'issue_item' product.id %}"><input type="submit" value="Sale Item" class="btn btn-info" btn type="button"/></a>
+    <a href="{% url 'add_item' product.id %}" ><input type= "submit" value="Update ltem" class="btn btn-light" type="button"/></a>
+</div>
+
+<br></br>
+<div class = "container">
+
+  <table class="table table-bordered" style="width: 100%; border-collapse: separate; border-spacing: 0 10px; box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);">
+    <thead style="background-color: #17a2b8; color: white;"> <!-- Updated to Bootstrap's 'info' color -->
+      <tr style="border-radius: 8px; overflow: hidden;">
+        <th scope="col" style="padding: 15px; text-align: center;">Branch Name</th>
+        <th scope="col" style="padding: 15px; text-align: center;">Item Name</th>
+        <th scope="col" style="padding: 15px; text-align: center;">Quantity</th>
+        <th scope="col" style="padding: 15px; text-align: center;">Unit Price (UGX)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: white; border-left: 5px solid #343a40; border-radius: 8px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);">
+        <td style="padding: 12px; text-align: center;">{{product.stock_branch_name}}</td>
+        <td style="padding: 12px; text-align: center;">{{product.item_name}}</td>
+        <td style="padding: 12px; text-align: center;">{{product.total_quantity}}</td>
+        <td style="padding: 12px; text-align: center;">UGX {{product.unit_price}}</td>
+      </tr>
+    </tbody>  
+</table>
+
+</div>
+
+<div class="footer">
+  © 2024 Happy Hoe Grocery. All rights reserved.
+</div>
+{% endblock%}

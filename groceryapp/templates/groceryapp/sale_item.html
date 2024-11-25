@@ -1,0 +1,37 @@
+{% extends 'groceryapp/base.html'%} {% block content%}
+{% load static %}
+<br></br>
+<br><br>
+<div class = "container">
+    <a href="" ><input type="submit" value="Sell Item" class="btn btn-primary" btn type="button"/></a>
+    <a href="" ><input type= "submit" value="Add to Stock" class="btn btn-primary btn" type="button"/></a>
+</div>
+
+<br></br>
+<div class = "container">
+  <table class="table table-bordered" style="width: 100%;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ltem Name</th>
+        <th scope="col">Tonnage</th>
+        <th scope="col">Price</th>
+        <th scope="col">Cost Price(UGX)</th>   
+      </tr>
+    </thead>
+    <tbody>
+      <tr>    
+        <td>{{product.category_name}}</td>
+        <td>{{product.item_name}}</td>
+        <td>{{product.total_quantity}}</td>
+        <td>UGX{{product.unit_price}}</td>   
+      </tr>
+    </tbody>  
+  </table>
+</div>
+
+<div class="footer">
+  © 2024 Happy Hoe Grocery. All rights reserved.
+</div>
+{% endblock%}
+
+

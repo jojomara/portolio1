@@ -1,0 +1,89 @@
+{% extends 'groceryapp/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<br/><br/><br/><br/><br/>
+
+<div class="container" style="max-width: 800px;">
+    <div class="card shadow-sm rounded">
+        <div class="card-header bg-info text-white text-center">
+            <h1 class="mb-0">SALES FORM</h1>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="" style="border-radius: 15px; padding: 20px;">
+                {% csrf_token %}
+                {{ sales_form|crispy }}
+
+                <!-- Dropdown for selecting item -->
+                <div class="form-group">
+                    <label for="item" class="font-weight-bold">Select Item</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-box-open"></i></span>
+                        </div>
+                        <select id="item" name="item" class="form-control" onchange="updatePrice()">
+                            <option value="" disabled selected>Select an item</option>
+                            <option value="beans" data-price="2000">Beans</option>
+                            <option value="rice" data-price="3000">Rice</option>
+                            <option value="maize" data-price="1500">Maize</option>
+                            <option value="soyabeans" data-price="1000">Soyabeans</option>
+                            <option value="cowpease" data-price="4000">Cowpease</option>
+                            <option value="g.nuts" data-price="5000">G.nuts</option>
+                            <!-- Add more items here with their prices -->
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Input for quantity -->
+                <div class="form-group">
+                    <label for="quantity" class="font-weight-bold">Quantity</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-balance-scale"></i></span>
+                        </div>
+                        <input type="number" id="quantity" name="quantity" class="form-control" placeholder="Confirm quantity" oninput="calculateTotal()">
+                    </div>
+                </div>
+
+                <!-- Display for total amount -->
+                <div class="form-group">
+                    <label for="total_amount" class="font-weight-bold">Total Amount</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                        </div>
+                        <input type="text" id="total_amount" name="total_amount" class="form-control" readonly>
+                    </div>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-info btn-block">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Real-Time Calculation -->
+<script>
+    let pricePerKg = 0;
+
+    function updatePrice() {
+        const itemSelect = document.getElementById('item');
+        const selectedItem = itemSelect.options[itemSelect.selectedIndex];
+        pricePerKg = parseFloat(selectedItem.getAttribute('data-price')) || 0;
+        calculateTotal();  // Recalculate the total if quantity is already entered
+    }
+
+    function calculateTotal() {
+        const quantity = parseFloat(document.getElementById('quantity').value) || 0;
+        const totalAmount = quantity * pricePerKg;
+        document.getElementById('total_amount').value = totalAmount.toFixed(2).toLocaleString();
+    }
+
+    document.getElementById('quantity').addEventListener('input', calculateTotal);
+    document.getElementById('item').addEventListener('change', updatePrice);
+</script>
+
+<br/><br/>
+{% endblock content %}
