@@ -24,6 +24,8 @@ SECRET_KEY = 'django-insecure-m4%+dgsuqjv2!6kth(ttsk$-%+0@rrr0os3kf32i(p8q(p8u55
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+print("STATIC_ROOT:", STATIC_ROOT)
+
 
 ALLOWED_HOSTS = []
 
@@ -118,8 +120,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'groceryapp/static')]
+STATIC_ROOT = [os.path.join(BASE_DIR, 'groceryapp/staticfiles')]
+
+
+
+
 #we are preparing django that our templates are going to use bootstrap4#
 CRISPY_TEMPLATE = "bootstrap4"
 CRISPY_TEMPLATE_PACK = "bootstrap4"
